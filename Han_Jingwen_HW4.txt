@@ -1,0 +1,75 @@
+..............................................F......................................................F.............................................................*.....................................................Not validating feed because no validator (feedvalidator in python) is installed
+...Not validating feed because no validator (feedvalidator in python) is installed
+..................................................................................................................Not validating feed because no validator (feedvalidator in python) is installed
+.................Not validating feed because no validator (feedvalidator in python) is installed
+.Not validating feed because no validator (feedvalidator in python) is installed
+.....Not validating feed because no validator (feedvalidator in python) is installed
+.....................Not validating feed because no validator (feedvalidator in python) is installed
+..Not validating feed because no validator (feedvalidator in python) is installed
+..............................................................................................Not validating feed because no validator (feedvalidator in python) is installed
+..Not validating feed because no validator (feedvalidator in python) is installed
+....Not validating feed because no validator (feedvalidator in python) is installed
+....Not validating feed because no validator (feedvalidator in python) is installed
+...........................................................................................................................................................................................................................................................................................................................................................*..............................*..................................................
+
+Pending:
+  TagsController /index if :index template exists should render :index
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/tags_controller_spec.rb:23
+  TagsController showing a single tag with some articles should render :show by default
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/tags_controller_spec.rb:60
+  CategoriesController /index if :index template exists should render :index
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:30
+  CategoriesController#show should render :show by default
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:62
+  CategoriesController#show should render personal when template exists
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:77
+  Admin::PagesController should create a page published in the future without a redirect
+    # :published_at parameter is currently ignored
+    # ./spec/controllers/admin/pages_controller_spec.rb:120
+  ThemeController disabled_test_javascript
+    # Not yet implemented
+    # ./spec/controllers/theme_controller_spec.rb:35
+  Article test_triggers_are_dependent
+    # Needs a fix for Rails ticket #5105: has_many: Dependent deleting does not work with STI
+    # ./spec/models/article_spec.rb:286
+  Article with tags lets the tag collection survive a load-save cycle
+    # Not yet implemented
+    # ./spec/models/article_spec.rb:241
+
+Failures:
+
+  1) Admin::ContentController with admin connection it should behave like index action should restrict to publication pending articles
+     Failure/Error: assigns(:articles).should == [article]
+       expected: [#<Article id: 291, type: "Article", title: "A big article", author: nil, body: "A content with several data", extended: "extended content for fun", excerpt: nil, created_at: "2020-03-20 23:42:57", updated_at: "2020-03-20 23:38:09", user_id: 317, permalink: "a-big-article", guid: "deadbeef273", text_filter_id: nil, whiteboard: nil, name: nil, published: false, allow_pings: true, allow_comments: true, published_at: "2020-01-01 00:00:00", state: "publication_pending", parent_id: nil, settings: {}, post_type: "read">]
+            got: [] (using ==)
+       Diff:
+       @@ -1,2 +1,2 @@
+       -[#<Article id: 291, type: "Article", title: "A big article", author: nil, body: "A content with several data", extended: "extended content for fun", excerpt: nil, created_at: "2020-03-20 23:42:57", updated_at: "2020-03-20 23:38:09", user_id: 317, permalink: "a-big-article", guid: "deadbeef273", text_filter_id: nil, whiteboard: nil, name: nil, published: false, allow_pings: true, allow_comments: true, published_at: "2020-01-01 00:00:00", state: "publication_pending", parent_id: nil, settings: {}, post_type: "read">]
+       +[]
+     Shared Example Group: "index action" called from ./spec/controllers/admin/content_controller_spec.rb:479
+     # ./spec/controllers/admin/content_controller_spec.rb:47:in `block (3 levels) in <top (required)>'
+
+  2) Admin::ContentController with publisher connection it should behave like index action should restrict to publication pending articles
+     Failure/Error: assigns(:articles).should == [article]
+       expected: [#<Article id: 411, type: "Article", title: "A big article", author: nil, body: "A content with several data", extended: "extended content for fun", excerpt: nil, created_at: "2020-03-20 23:43:04", updated_at: "2020-03-20 23:36:38", user_id: 373, permalink: "a-big-article", guid: "deadbeef364", text_filter_id: nil, whiteboard: nil, name: nil, published: false, allow_pings: true, allow_comments: true, published_at: "2020-01-01 00:00:00", state: "publication_pending", parent_id: nil, settings: {}, post_type: "read">]
+            got: [] (using ==)
+       Diff:
+       @@ -1,2 +1,2 @@
+       -[#<Article id: 411, type: "Article", title: "A big article", author: nil, body: "A content with several data", extended: "extended content for fun", excerpt: nil, created_at: "2020-03-20 23:43:04", updated_at: "2020-03-20 23:36:38", user_id: 373, permalink: "a-big-article", guid: "deadbeef364", text_filter_id: nil, whiteboard: nil, name: nil, published: false, allow_pings: true, allow_comments: true, published_at: "2020-01-01 00:00:00", state: "publication_pending", parent_id: nil, settings: {}, post_type: "read">]
+       +[]
+     Shared Example Group: "index action" called from ./spec/controllers/admin/content_controller_spec.rb:621
+     # ./spec/controllers/admin/content_controller_spec.rb:47:in `block (3 levels) in <top (required)>'
+
+Finished in 1 minute 14.91 seconds
+1231 examples, 2 failures, 9 pending
+
+Failed examples:
+
+rspec ./spec/controllers/admin/content_controller_spec.rb:44 # Admin::ContentController with admin connection it should behave like index action should restrict to publication pending articles
+rspec ./spec/controllers/admin/content_controller_spec.rb:44 # Admin::ContentController with publisher connection it should behave like index action should restrict to publication pending articles
+Coverage report generated for RSpec to /home/ec2-user/environment/typo/coverage. 13413 / 15013 LOC (89.34%) covered.

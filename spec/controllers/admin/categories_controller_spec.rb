@@ -33,12 +33,31 @@ describe Admin::CategoriesController do
       assigns(:categories).should_not be_nil
     end
   end
-
-  it "test_update" do
-    post :edit, :id => Factory(:category).id
-    assert_response :redirect, :action => 'index'
+  
+  it 'test_new_or_edit_with_no_id' do
+    get :edit, :id => nil
+    assert_template 'new'
   end
-
+  
+  describe "test_update" do
+    before(:each) do
+      post :edit, :id => Factory(:category).id
+    end
+    it 'should redirect to template new' do
+      assert_response :redirect, :action => 'index'
+    end
+    
+    it 'should edit an existing category' do
+      expect(flash[:notice]).to eq("Category was successfully saved.")
+    end
+  end
+  
+  it 'should create a new category' do
+    count=Category.count
+    post :edit, :category => {:name => "newOne", :keywords => "newOne", :permalink => "newOne", :description => "newOne"}
+    expect(flash[:notice]).to eq("Category was successfully saved.")
+    expect(Category.count).to eq(count+1)
+  end
   describe "test_destroy with GET" do
     before(:each) do
       test_id = Factory(:category).id
